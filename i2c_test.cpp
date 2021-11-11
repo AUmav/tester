@@ -21,12 +21,17 @@ int main()
     {
         int numRead = read(fd, &data, 2);
         if (numRead != 2)
-            printf("Could'nt read whole buffer of data, errorcode: %d\n", errno);
+            printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
         else {
             printf("Numbers: %d.%d\n", data[0], data[1]);
         }
 
         sleep(1);
+
+        int numWrite = write(fd, 5, 2);
+        if (numWrite != 2)
+            printf("Could'nt write whole buffer of data, errorcode: %d\n", errno);
+
     }
 
 
