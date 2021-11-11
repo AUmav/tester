@@ -28,7 +28,7 @@ int main()
 
         sleep(1);
 
-        int numWrite = write(fd, 5, 2);
+        int numWrite = write(fd, wrData, 2);
         if (numWrite != 2)
             printf("Could'nt write whole buffer of data, errorcode: %d\n", errno);
 
