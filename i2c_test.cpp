@@ -18,7 +18,9 @@ int main()
         printf("ioctl() returns error, errorno: %d \n", errno);
     
     char data[bufSize];
-    char wrData[bufSize] = {1,5};
+    char wrData[bufSize];
+    wrData[0] = 1;
+    wrData[1] = 2;
     while (1)
     {
         int numRead = read(fd, &data, bufSize);
