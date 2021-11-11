@@ -13,6 +13,8 @@ int main()
     int err = ioctl(fd, 0x0703, 0x08); // i2cdev sys call (0x0703) to set I2C addr
     if (err != 0)
         printf("ioctl() returns error, errorno: %d \n", errno);
+    
+    char data[3];
 
     while (1)
     {
