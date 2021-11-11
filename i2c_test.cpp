@@ -7,7 +7,7 @@
 
 int main()
 {
-    fd = open("/dev/i2c-1", O_RDWR);
+    int fd = open("/dev/i2c-1", O_RDWR);
     if (fd == -1)
         printf("Couldn't open /i2c-1 file, error code: %d \n", errno);
     int err = ioctl(fd, 0x0703, 0x08); // i2cdev sys call (0x0703) to set I2C addr
@@ -18,7 +18,7 @@ int main()
 
     while (1)
     {
-        numRead = read(fd, &data, 2);
+        int numRead = read(fd, &data, 2);
         if (numRead != 2)
             printf("Could'nt read whole buffer of data, errorcode: %d\n", errno);
         else {
