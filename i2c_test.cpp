@@ -16,7 +16,7 @@ int main()
         printf("ioctl() returns error, errorno: %d \n", errno);
     
     char data[2];
-    char wrData[] = { 0,5 };
+    char wrData[] = { 1,5 };
     while (1)
     {
         int numRead = read(fd, &data, 2);
