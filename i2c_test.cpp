@@ -18,7 +18,7 @@ int main()
         printf("ioctl() returns error, errorno: %d \n", errno);
     
     char data[bufSize];
-    char wrData[bufSize];
+    char wrData[bufSize-1];
     wrData[0] = 7;
     while (1)
     {
@@ -31,7 +31,7 @@ int main()
 
         sleep(1);
 
-        int numWrite = write(fd, wrData, bufSize);
+        int numWrite = write(fd, wrData, bufSize-1);
         if (numWrite != bufSize)
             printf("Couldn't write whole buffer of data, errorcode: %d\n", errno);
 
