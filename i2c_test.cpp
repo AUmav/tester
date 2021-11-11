@@ -36,9 +36,9 @@ int main()
         if (numWrite != bufSize)
             printf("Couldn't write whole buffer of data, errorcode: %d\n", errno);
 
-        wrData[0]++;
-        if (wrData[0] == 11) {
-            wrData[0] = 0;
+        wrData[1]++;
+        if (wrData[1] == 11) {
+            wrData[1] = 0;
         }
 
     }
