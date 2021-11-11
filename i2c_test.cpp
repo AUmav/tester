@@ -8,6 +8,8 @@
 
 int main()
 {
+    int bufSize = 2;
+
     int fd = open("/dev/i2c-1", O_RDWR);
     if (fd == -1)
         printf("Couldn't open /i2c-1 file, error code: %d \n", errno);
@@ -15,12 +17,12 @@ int main()
     if (err != 0)
         printf("ioctl() returns error, errorno: %d \n", errno);
     
-    char data[2];
-    char wrData[] = { 7, 1};
+    char data[bufSize];
+    char wrData[bufSize] = { '1', '5'};
     while (1)
     {
-        int numRead = read(fd, &data, 2);
-        if (numRead != 2)
+        int numRead = read(fd, &data, bufSize);
+        if (numRead != bufSize)
             printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
         else {
             printf("Numbers: %d.%d\n", data[0], data[1]);
@@ -28,8 +30,8 @@ int main()
 
         sleep(1);
 
-        int numWrite = write(fd, wrData, 2);
-        if (numWrite != 2)
+        int numWrite = write(fd, wrData, bufSize);
+        if (numWrite != bufSize)
             printf("Couldn't write whole buffer of data, errorcode: %d\n", errno);
 
     }
