@@ -37,6 +37,9 @@ int main()
             printf("Couldn't write whole buffer of data, errorcode: %d\n", errno);
 
         wrData[1]++;
+        if (wrData[1] == 11) {
+            wrData[1] = 0;
+        }
     }
 
 
