@@ -19,8 +19,7 @@ int main()
     
     char data[bufSize];
     char wrData[bufSize];
-    wrData[0] = 1;
-    wrData[1] = 2;
+    wrData[0] = 7;
     while (1)
     {
         int numRead = read(fd, &data, bufSize);
@@ -41,12 +40,6 @@ int main()
             wrData[1] = 0;
         }
 
-        int numRead = read(fd, &data, bufSize);
-        if (numRead != bufSize)
-            printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
-        else {
-            printf("Numbers: %d.%d\n", data[0], data[1]);
-        }
     }
 
 
