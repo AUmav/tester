@@ -25,6 +25,8 @@ int main()
         else {
             printf("Numbers: %d.%d\n", data[0], data[1]);
         }
+
+        sleep(1);
     }
 
 
