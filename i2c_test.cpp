@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <sys/ioctl.h>
 
 int main()
 {
