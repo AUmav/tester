@@ -24,7 +24,6 @@ int main()
     
     while (1)
     {
-
         int numWrite = write(fd, data, bufSize);
         if (numWrite != bufSize)
             printf("Couldn't write whole buffer of data, errorcode: %d\n", errno);
@@ -33,6 +32,16 @@ int main()
         if (data[1] == 11) {
             data[1] = 0;
         }
+
+        int numRead = read(fd, &data, bufSize);
+        if (numRead != bufSize)
+            printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
+        else {
+            printf("Numbers: %d.%d\n", data[0], data[1]);
+        }
+
+        sleep(1);
+
 
 
 
