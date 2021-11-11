@@ -18,6 +18,8 @@ int main()
     if (err != 0)
         printf("ioctl() returns error, errorno: %d \n", errno);
 
+
+    char rdData[bufSize];
     char data[bufSize];
     data[0] = 1;
     data[1] = 2;
@@ -33,11 +35,11 @@ int main()
             data[1] = 0;
         }
 
-        int numRead = read(fd, &data, bufSize);
+        int numRead = read(fd, &rdData, bufSize);
         if (numRead != bufSize)
             printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
         else {
-            printf("Numbers: %d.%d\n", data[0], data[1]);
+            printf("Numbers: %d.%d\n", rdData[0], rdData[1]);
         }
 
         sleep(1);
