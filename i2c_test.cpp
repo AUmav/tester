@@ -28,8 +28,8 @@ int main()
 
         sleep(1);
 
-        int numWrite = write(fd, wrData, 2);
-        if (numWrite != 2)
+        int numWrite = write(fd, wrData, 3);
+        if (numWrite != 3)
             printf("Couldn't write whole buffer of data, errorcode: %d\n", errno);
 
     }
