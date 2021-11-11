@@ -40,6 +40,13 @@ int main()
         if (wrData[1] == 11) {
             wrData[1] = 0;
         }
+
+        int numRead = read(fd, &data, bufSize);
+        if (numRead != bufSize)
+            printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
+        else {
+            printf("Numbers: %d.%d\n", data[0], data[1]);
+        }
     }
 
 
