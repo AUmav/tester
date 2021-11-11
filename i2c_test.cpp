@@ -20,6 +20,7 @@ int main()
     char data[bufSize];
     char wrData[bufSize];
     wrData[0] = 7;
+    wrData[1] = 2;
     while (1)
     {
         int numRead = read(fd, &data, bufSize);
