@@ -28,7 +28,7 @@ int main()
 
         int numWrite = write(fd, wrData, bufSize);
         if (numWrite != bufSize)
-            printf("Couldn't write whole buffer of data, errorcode: %d\n", errno);
+            printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
 
         int numRead = read(fd, &rdData, bufSize);
         if (numRead != bufSize)
