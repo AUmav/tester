@@ -19,7 +19,7 @@ int main()
 
 
     unsigned char rdData[bufSize];
-    unsigned char wrData[bufSize];
+    int wrData[bufSize];
     wrData[0] = 1;
 
     while (1)
