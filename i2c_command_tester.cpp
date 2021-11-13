@@ -19,12 +19,12 @@ int main()
 
 
     unsigned char rdData[bufSize];
-    unsigned char wrData;
+    unsigned char wrData[1];
 
     while (1)
     {
         printf("Input the number of the command you want to send: ");
-        scanf("%d", wrData);
+        scanf("%d", wrData[0]);
 
         int numWrite = write(fd, wrData, 1);
         if (numWrite != 1)
