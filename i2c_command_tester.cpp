@@ -24,7 +24,7 @@ int main()
     while (1)
     {
         printf("Input the number of the command you want to send: ");
-        scanf("%c", wrData[1]);
+        scanf("%d", &wrData[1]);
 
         int numWrite = write(fd, wrData, bufSize);
         if (numWrite != bufSize)
