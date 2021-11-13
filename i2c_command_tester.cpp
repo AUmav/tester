@@ -19,15 +19,15 @@ int main()
 
 
     unsigned char rdData[bufSize];
-    unsigned char wrData[1];
-
+    unsigned char wrData[bufSize];
+    wrData[0] = 0;
     while (1)
     {
         printf("Input the number of the command you want to send: ");
-        scanf("%d", wrData[0]);
+        scanf("%d", wrData[1]);
 
-        int numWrite = write(fd, wrData, 1);
-        if (numWrite != 1)
+        int numWrite = write(fd, wrData, bufSize);
+        if (numWrite != bufSize)
             printf("Couldn't write whole buffer of data, errorcode: %d\n", errno);
 
         int numRead = read(fd, &rdData, bufSize);
