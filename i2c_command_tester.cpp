@@ -8,7 +8,7 @@
 
 int main()
 {
-    int bufSize = 2;
+    int bufSize = 3;
 
     int fd = open("/dev/i2c-1", O_RDWR);
     if (fd == -1)
@@ -34,7 +34,7 @@ int main()
         if (numRead != bufSize)
             printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
         else {
-            printf("Fluid level: %d || Placement: %d", rdData[0], rdData[1]);
+            printf("Fluid level: %d || Placement: %d\n", rdData[0], rdData[1]);
         }
     }
 
