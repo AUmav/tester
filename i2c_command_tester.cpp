@@ -27,7 +27,7 @@ int main()
         printf("Input the number of the command you want to send: ");
         printf("%d", wrData)
 
-        int numWrite = write(fd, data, bufSize);
+        int numWrite = write(fd, wrData, bufSize);
         if (numWrite != bufSize)
             printf("Couldn't write whole buffer of data, errorcode: %d\n", errno);
 
