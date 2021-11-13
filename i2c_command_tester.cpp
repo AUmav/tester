@@ -20,7 +20,7 @@ int main()
 
     unsigned char rdData[bufSize];
     unsigned char wrData[bufSize];
-    wrData[0] = 0;
+    wrData[0] = 1;
     while (1)
     {
         printf("Input the number of the command you want to send: ");
