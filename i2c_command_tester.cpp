@@ -38,12 +38,14 @@ int main()
 
         //Reading
         int numRead = read(fd, &rdData, bufSize);
-        while (numRead != bufSize) {
+        if (numRead != bufSize ||) {
             printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
         }
-
-        printf("Byte 1: %d || Byte 2: %d\n", rdData[0], rdData[1]);
-
+        else {
+            if (rdData[0] == 40) {
+                printf("Byte 1: %d || Byte 2: %d\n", rdData[0], rdData[1]);
+            }
+        }
     }
 
 
