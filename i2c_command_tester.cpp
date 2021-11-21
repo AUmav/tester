@@ -101,7 +101,7 @@ int main()
             printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
         
 
-        numRead = read(fd, &rdData, bufSize);
+        int numRead = read(fd, &rdData, bufSize);
         if (numRead != bufSize) {
             printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
         }
