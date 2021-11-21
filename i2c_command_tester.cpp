@@ -38,7 +38,7 @@ int main()
 
         //Reading
         int numRead = read(fd, &rdData, bufSize);
-        if (numRead != bufSize ||) {
+        if (numRead != bufSize) {
             printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
         }
         else {
