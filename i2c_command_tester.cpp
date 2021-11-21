@@ -7,16 +7,16 @@
 #include <sys/ioctl.h>
 #include <termios.h>
 
-static struct termios old, new;
+static struct termios old, new1;
 
 /* Initialize new terminal i/o settings */
 void initTermios(int echo)
 {
     tcgetattr(0, &old); /* grab old terminal i/o settings */
-    new = old; /* make new settings same as old settings */
-    new.c_lflag &= ~ICANON; /* disable buffered i/o */
-    new.c_lflag &= echo ? ECHO : ~ECHO; /* set echo mode */
-    tcsetattr(0, TCSANOW, &new); /* use these new terminal i/o settings now */
+    new1 = old; /* make new settings same as old settings */
+    new1.c_lflag &= ~ICANON; /* disable buffered i/o */
+    new1.c_lflag &= echo ? ECHO : ~ECHO; /* set echo mode */
+    tcsetattr(0, TCSANOW, &new1); /* use these new terminal i/o settings now */
 }
 
 /* Restore old terminal i/o settings */
