@@ -5,6 +5,7 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <sys/ioctl.h>
+#include <conio.h>
 
 int main()
 {
@@ -35,9 +36,11 @@ int main()
         if (numWrite != bufSize)
             printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
 
-
+        char keyhit = '1';
         //Reading
-        while (rdData[0] != 40) {
+        while (rdData[0] != 40 || keyhit != 'x') {
+            keyhit = _getch();
+
             int numRead = read(fd, &rdData, bufSize);
             if (numRead != bufSize) {
                 printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
@@ -47,6 +50,23 @@ int main()
                     printf("Byte 1: %d || Byte 2: %d\n", rdData[0], rdData[1]);
                 }
             }
+        }
+
+        printf("Exiting\n");
+
+        wrData[1] = 99;
+        wrData[2] = 99;
+        int numWrite = write(fd, wrData, bufSize);
+        if (numWrite != bufSize)
+            printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
+        
+
+        int numRead = read(fd, &rdData, bufSize);
+        if (numRead != bufSize) {
+            printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
+        }
+        else {
+            printf("Byte 1: %d || Byte 2: %d\n", rdData[0], rdData[1]);
         }
     }
 
