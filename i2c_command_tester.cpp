@@ -47,7 +47,6 @@ char getche(void)
     return getch_(1);
 }
 
-
 int main()
 {
     int bufSize = 3;
@@ -80,7 +79,7 @@ int main()
         char keyhit = '1';
         //Reading
         while (rdData[0] != 40 || keyhit != 'x') {
-            keyhit = _getch();
+            keyhit = getch();
 
             int numRead = read(fd, &rdData, bufSize);
             if (numRead != bufSize) {
@@ -97,12 +96,12 @@ int main()
 
         wrData[1] = 99;
         wrData[2] = 99;
-        int numWrite = write(fd, wrData, bufSize);
+        numWrite = write(fd, wrData, bufSize);
         if (numWrite != bufSize)
             printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
         
 
-        int numRead = read(fd, &rdData, bufSize);
+        numRead = read(fd, &rdData, bufSize);
         if (numRead != bufSize) {
             printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
         }
