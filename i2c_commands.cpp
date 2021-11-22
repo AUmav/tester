@@ -82,34 +82,34 @@ int main()
 
         char keyhit = '1';
         //Reading
-        while (rdData[0] != 40 || keyhit != 'x') {
+        //while (rdData[0] != 40 || //keyhit != 'x') {
             int numRead = read(fd, &rdData, rdBufSize);
             if (numRead != rdBufSize) {
                 printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
             }
             else {
-                if (rdData[0] == 40) {
+                //if (rdData[0] == 40) {
                     printf("Status code: %d || Data: %d\n", rdData[1], rdData[2]);
-                }
+                //}
             }
-            keyhit = getch();
+            //keyhit = getch();
         }
 
-        printf("Exiting\n");
+        //printf("Exiting\n");
 
-        wrData[1] = 16;
-        numWrite = write(fd, wrData, wrBufSize);
-        if (numWrite != wrBufSize)
-            printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
-        
+        //wrData[1] = 16;
+        //numWrite = write(fd, wrData, wrBufSize);
+        //if (numWrite != wrBufSize)
+        //    printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
+        //
 
-        int numRead = read(fd, &rdData, rdBufSize);
-        if (numRead != rdBufSize) {
-            printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
-        }
-        else {
-            printf("Status code: %d || Data: %d\n", rdData[1], rdData[2]);
-        }
+        //int numRead = read(fd, &rdData, rdBufSize);
+        //if (numRead != rdBufSize) {
+        //    printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
+        //}
+        //else {
+        //    printf("Status code: %d || Data: %d\n", rdData[1], rdData[2]);
+        //}
     }
 
     //comment
