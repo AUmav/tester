@@ -83,8 +83,6 @@ int main()
         char keyhit = '1';
         //Reading
         while (rdData[0] != 40 || keyhit != 'x') {
-            keyhit = getch();
-
             int numRead = read(fd, &rdData, rdBufSize);
             if (numRead != rdBufSize) {
                 printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
@@ -94,6 +92,7 @@ int main()
                     printf("Status code: %d || Data: %d\n", rdData[1], rdData[0]);
                 }
             }
+            keyhit = getch();
         }
 
         printf("Exiting\n");
