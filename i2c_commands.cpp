@@ -72,7 +72,7 @@ int main()
         printf("Input the command you want to send: ");
         scanf("%d", &wrData[1]);
 
-        printf("Tryk 'x' for at stoppe");
+        printf("Tryk 'x' for at stoppe\n");
 
 
         //Writing
