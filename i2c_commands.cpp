@@ -89,7 +89,7 @@ int main()
             }
             else {
                 if (rdData[0] == 40) {
-                    printf("Status code: %d || Data: %d\n", rdData[1], rdData[0]);
+                    printf("Status code: %d || Data: %d\n", rdData[1], rdData[2]);
                 }
             }
             keyhit = getch();
