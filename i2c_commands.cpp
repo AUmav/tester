@@ -77,7 +77,7 @@ int main()
 
         //Writing
         int numWrite = write(fd, wrData, wrBufSize);
-        if (numWrite != bufSize)
+        if (numWrite != wrBufSize)
             printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
 
         char keyhit = '1';
@@ -86,7 +86,7 @@ int main()
             keyhit = getch();
 
             int numRead = read(fd, &rdData, rdBufSize);
-            if (numRead != bufSize) {
+            if (numRead != rdBufSize) {
                 printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
             }
             else {
@@ -100,12 +100,12 @@ int main()
 
         wrData[1] = 16;
         numWrite = write(fd, wrData, wrBufSize);
-        if (numWrite != bufSize)
+        if (numWrite != wrBufSize)
             printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
         
 
         int numRead = read(fd, &rdData, rdBufSize);
-        if (numRead != bufSize) {
+        if (numRead != rdBufSize) {
             printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
         }
         else {
@@ -113,6 +113,6 @@ int main()
         }
     }
 
-
+    //comment
     return 0;
 }
