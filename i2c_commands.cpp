@@ -94,7 +94,7 @@ int main()
                 }
             }
             //keyhit = getch();
-        }while (rdData[0] != 40)
+        } while (rdData[0] != 40);
 
         //printf("Exiting\n");
 
