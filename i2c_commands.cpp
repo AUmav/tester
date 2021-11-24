@@ -72,9 +72,6 @@ int main()
         printf("Input the command you want to send: ");
         scanf("%d", &wrData[1]);
 
-        printf("Tryk 'x' for at stoppe\n");
-
-
         //Writing
         int numWrite = write(fd, wrData, wrBufSize);
         if (numWrite != wrBufSize)
