@@ -51,7 +51,7 @@ int main()
 
 				}
 				else {
-					printf("\nStatus code: %d\n" rdData[1]);
+					printf("\nStatus code: %d\n", rdData[1]);
 				}
 			}
 		}
