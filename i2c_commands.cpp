@@ -27,7 +27,7 @@ int main()
 	
 	while (1)
 	{
-		printf("\nCommands:\n1. Opfyld\n2.Kalibrer\n3.InitCleaning\n4.StartCleaning\n5.startRefill\n");
+		printf("\nCommands:\n1.startDispense\2.checkDispense\n3.startCalibrate\n4.initCleaning\n5.startCleaning\n6.startRefill\n7.endRefill");
 
 		//Getting user input
 		printf("Input the command you want to send: ");
