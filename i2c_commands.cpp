@@ -38,20 +38,24 @@ int main()
 		if (numWrite != wrBufSize)
 			printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
 
-		int numRead = read(fd, &rdData, rdBufSize);
-		if (numRead != rdBufSize) {
-			printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
-		}
-		else{
-				if (rdData[1] == 4)
-				{
-					printf("\nStatus code: %d || Data: %d.%d\n", rdData[1], rdData[2], rdData[3]);
+		do {
+			int numRead = read(fd, &rdData, rdBufSize);
+			if (numRead != rdBufSize) {
+				printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
+			}
+			else {
+				if (rdData == 10) {
+					if (rdData[1] == 4)
+					{
+						printf("\nStatus code: %d || Data: %d.%d\n", rdData[1], rdData[2], rdData[3]);
 
+					}
+					else {
+						printf("\nStatus code: %d\n", rdData[1]);
+					}
 				}
-				else {
-					printf("\nStatus code: %d\n", rdData[1]);
-				}
-		}
+			}
+		} while(rdData[0] != 10)
 	}
 
 	return 0;
