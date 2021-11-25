@@ -21,8 +21,8 @@ int main()
 		printf("ioctl() returns error, errorno: %d \n", errno);
 
 
-	int rdData[rdBufSize];
-	int wrData[wrBufSize];
+	char rdData[rdBufSize];
+	char wrData[wrBufSize];
 	wrData[0] = 0; //register byte? Kan give fejl, hvis den aendres
 	while (1)
 	{
