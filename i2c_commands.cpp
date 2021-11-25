@@ -55,7 +55,7 @@ int main()
 					}
 				}
 			}
-		} while(rdData[0] != 10)
+		} while (rdData[0] != 10);
 	}
 
 	return 0;
