@@ -43,7 +43,7 @@ int main()
 			printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
 		}
 		else{
-			if(rdData[0] == 40)
+			if(rdData[0] == 10)
 			{
 				if (rdData[1] == 4)
 				{
