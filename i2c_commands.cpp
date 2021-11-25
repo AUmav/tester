@@ -10,7 +10,7 @@
 int main()
 {
 	int wrBufSize = 2;
-	int rdBufSize = 3;
+	int rdBufSize = 4;
 
 	int fd = open("/dev/i2c-1", O_RDWR);
 	if (fd == -1)
@@ -21,12 +21,13 @@ int main()
 		printf("ioctl() returns error, errorno: %d \n", errno);
 
 
-	char rdData[rdBufSize];
-	char wrData[wrBufSize];
+	unsigned char rdData[rdBufSize];
+	unsigned char wrData[wrBufSize];
 	wrData[0] = 0; //register byte? Kan give fejl, hvis den aendres
+	
 	while (1)
 	{
-		printf("Commands:\n1. Opfyld\n2.Kalibrer\n3.InitCleaning\n4.StartCleaning\n5.startRefill\n");
+		printf("\nCommands:\n1. Opfyld\n2.Kalibrer\n3.InitCleaning\n4.StartCleaning\n5.startRefill\n");
 
 		//Getting user input
 		printf("Input the command you want to send: ");
@@ -37,14 +38,23 @@ int main()
 		if (numWrite != wrBufSize)
 			printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
 
-		/*int numRead = read(fd, &rdData, rdBufSize);
+		int numRead = read(fd, &rdData, rdBufSize);
 		if (numRead != rdBufSize) {
 			printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
 		}
-		else {
-				printf("Status code: %d || Data: %d\n", rdData[1], rdData[2]);
+		else{
+			if(rdData[0] == 40)
+			{
+				if (rdData[1] == 4)
+				{
+					printf("\nStatus code: %d || Data: %d.%d\n", rdData[1], rdData[2], rdData[3]);
+
+				}
+				else {
+					printf("\nStatus code: %d\n" rdData[1]);
+				}
 			}
-		}*/
+		}
 	}
 
 	return 0;
