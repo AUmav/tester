@@ -44,7 +44,7 @@ int main()
 				printf("Couldn't read whole buffer of data, errorcode: %d\n", errno);
 			}
 			else {
-				if (rdData == 10) {
+				if (rdData[0] == 10) {
 					if (rdData[1] == 4)
 					{
 						printf("\nStatus code: %d || Data: %d.%d\n", rdData[1], rdData[2], rdData[3]);
