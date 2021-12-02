@@ -93,12 +93,7 @@ int main()
 									}
 									/* Listening for input stream for any activity */
 									ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
-									if (ready_for_reading == -1) {
-											/* Some error has occured in input */
-											printf("Unable to read your input\n");
-											return -1;
-									}
-									else if(ready_for_reading){
+									if(ready_for_reading){
 										wrData[1] = 16;
 										int numWrite = write(fd, wrData, wrBufSize);
 										if (numWrite != wrBufSize)
