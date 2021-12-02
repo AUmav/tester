@@ -46,7 +46,7 @@ int main()
 				}
 				else {
 					if (rdData[0] == 10) {
-						if{rdData[1] == 1}{
+						if(rdData[1] == 1){
 							printf("\nStatus code: %d\n", rdData[1]);
 							printf("Sending command 2: checkDispense()");
 							wrData[1] = 2;
@@ -72,7 +72,7 @@ int main()
 										}
 									}
 								} while (rdData[0] != 10);
-							} while (rdData[1] != 2 || rdData[1] != 4 )
+							} while (rdData[1] == 5);
 						}
 
 						}
