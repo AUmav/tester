@@ -21,7 +21,7 @@ int main()
 		printf("ioctl() returns error, errorno: %d \n", errno);
 
 
-	unsigned char rdData[rdBufSize];
+	int8_t rdData[rdBufSize];
 	unsigned char wrData[wrBufSize];
 	wrData[0] = 0; //register byte? Kan give fejl, hvis den aendres
 
