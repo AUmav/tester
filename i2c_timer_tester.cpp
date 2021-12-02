@@ -10,7 +10,7 @@
 #include <sys/time.h>
 #include <sys/types.h>
 
-#define WAIT 2
+#define WAIT 10
 
 int main()
 {
@@ -96,8 +96,8 @@ int main()
 								FD_ZERO(&input_set );
 								/* Listen to the input descriptor */
 								FD_SET(STDIN_FILENO, &input_set);
-								timeout.tv_sec = WAIT;    // WAIT seconds
-								timeout.tv_usec = 0;    // 0 milliseconds
+								timeout.tv_sec = 0;    // 0 seconds
+								timeout.tv_usec = WAIT;    // WAIT milliseconds
 								ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
 
 								if(ready_for_reading){
