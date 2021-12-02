@@ -93,9 +93,13 @@ int main()
 									}
 								} while (rdData[0] != 10);
 								/* Listening for input stream for any activity */
+								FD_ZERO(&input_set );
+								/* Listen to the input descriptor */
+								FD_SET(STDIN_FILENO, &input_set);
 								timeout.tv_sec = WAIT;    // WAIT seconds
 								timeout.tv_usec = 0;    // 0 milliseconds
 								ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
+
 								if(ready_for_reading){
 									wrData[1] = 16;
 									int numWrite = write(fd, wrData, wrBufSize);
