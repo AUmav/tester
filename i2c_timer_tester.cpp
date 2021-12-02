@@ -17,20 +17,11 @@ int main()
 	int wrBufSize = 2;
 	int rdBufSize = 4;
 
+// !! Inkluderer kode taget fra https://stackoverflow.com/questions/7226603/timeout-function
 	fd_set          input_set;
 	struct timeval  timeout;
 	int             ready_for_reading = 0;
 	int             read_bytes = 0;
-
-	/* Empty the FD Set */
-	FD_ZERO(&input_set );
-	/* Listen to the input descriptor */
-	FD_SET(STDIN_FILENO, &input_set);
-
-	/* Waiting for some seconds */
-	timeout.tv_sec = WAIT;    // WAIT seconds
-	timeout.tv_usec = 0;    // 0 milliseconds
-
 
 	int fd = open("/dev/i2c-1", O_RDWR);
 	if (fd == -1)
@@ -92,8 +83,9 @@ int main()
 										}
 									}
 								} while (rdData[0] != 10);
+/// STOP !
 								/* Listening for input stream for any activity */
-								FD_ZERO(&input_set );
+								FD_ZERO(&input_set);
 								/* Listen to the input descriptor */
 								FD_SET(STDIN_FILENO, &input_set);
 								timeout.tv_sec = 0;    // 0 seconds
@@ -106,9 +98,7 @@ int main()
 									if (numWrite != wrBufSize)
 										printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
 								}
-								else{
-									printf("lol\n");
-								}
+//////
 							} while (rdData[1] == 5);
 						}
 						else{
