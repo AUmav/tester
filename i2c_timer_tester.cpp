@@ -5,6 +5,7 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <sys/ioctl.h>
+#include <stdint.h>
 #include "getch.h"
 
 int main()
