@@ -7,11 +7,30 @@
 #include <sys/ioctl.h>
 #include <stdint.h>
 #include "getch.h"
+#include <sys/time.h>
+#include <sys/types.h>
+
+#define WAIT 2
 
 int main()
 {
 	int wrBufSize = 2;
 	int rdBufSize = 4;
+
+	fd_set          input_set;
+	struct timeval  timeout;
+	int             ready_for_reading = 0;
+	int             read_bytes = 0;
+
+	/* Empty the FD Set */
+	FD_ZERO(&input_set );
+	/* Listen to the input descriptor */
+	FD_SET(STDIN_FILENO, &input_set);
+
+	/* Waiting for some seconds */
+	timeout.tv_sec = WAIT;    // WAIT seconds
+	timeout.tv_usec = 0;    // 0 milliseconds
+
 
 	int fd = open("/dev/i2c-1", O_RDWR);
 	if (fd == -1)
@@ -22,7 +41,7 @@ int main()
 		printf("ioctl() returns error, errorno: %d \n", errno);
 
 
-	char rdData[rdBufSize];
+	unsigned char rdData[rdBufSize];
 	unsigned char wrData[wrBufSize];
 	wrData[0] = 0; //register byte? Kan give fejl, hvis den aendres
 
@@ -71,6 +90,22 @@ int main()
 												printf("\nStatus code: %d\n", rdData[1]);
 											}
 										}
+									}
+									/* Listening for input stream for any activity */
+									ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
+									if (ready_for_reading == -1) {
+											/* Some error has occured in input */
+											printf("Unable to read your input\n");
+											return -1;
+									}
+									else if(ready_for_reading){
+										wrData[1] = 16;
+										int numWrite = write(fd, wrData, wrBufSize);
+										if (numWrite != wrBufSize)
+											printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
+									}
+									else{
+										printf("lol\n");
 									}
 								} while (rdData[0] != 10);
 							} while (rdData[1] == 5);
