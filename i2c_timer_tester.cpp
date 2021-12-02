@@ -67,7 +67,7 @@ int main()
 												printf("\nStatus code: %d || Time = %ds, %dcs\n", rdData[1], rdData[2], rdData[3]);
 											}
 											else{
-												printf("\nStatus code: %d\n", rdData[1]);
+												printf("\nStatus ++ code: %d\n", rdData[1]);
 											}
 										}
 									}
@@ -75,7 +75,7 @@ int main()
 							} while (rdData[1] == 5);
 						}
 						else{
-							printf("\nStatus code: %d\n", rdData[1]);
+							printf("\nStatus -- code: %d\n", rdData[1]);
 						}
 					}
 				}
