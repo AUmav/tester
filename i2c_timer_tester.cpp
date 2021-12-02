@@ -94,6 +94,7 @@ int main()
 								} while (rdData[0] != 10);
 								/* Listening for input stream for any activity */
 								timeout.tv_sec = WAIT;    // WAIT seconds
+								timeout.tv_usec = 0;    // 0 milliseconds
 								ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
 								if(ready_for_reading){
 									wrData[1] = 16;
