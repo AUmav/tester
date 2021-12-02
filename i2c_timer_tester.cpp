@@ -91,18 +91,18 @@ int main()
 											}
 										}
 									}
-									/* Listening for input stream for any activity */
-									ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
-									if(ready_for_reading){
-										wrData[1] = 16;
-										int numWrite = write(fd, wrData, wrBufSize);
-										if (numWrite != wrBufSize)
-											printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
-									}
-									else{
-										printf("lol\n");
-									}
 								} while (rdData[0] != 10);
+								/* Listening for input stream for any activity */
+								ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
+								if(ready_for_reading){
+									wrData[1] = 16;
+									int numWrite = write(fd, wrData, wrBufSize);
+									if (numWrite != wrBufSize)
+										printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
+								}
+								else{
+									printf("lol\n");
+								}
 							} while (rdData[1] == 5);
 						}
 						else{
