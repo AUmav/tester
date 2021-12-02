@@ -74,8 +74,6 @@ int main()
 								} while (rdData[0] != 10);
 							} while (rdData[1] == 5);
 						}
-
-						}
 						else{
 							printf("\nStatus code: %d\n", rdData[1]);
 						}
