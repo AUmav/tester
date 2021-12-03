@@ -93,6 +93,7 @@ int main()
 								ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
 
 								if(ready_for_reading){
+									printf("Stop button pressed\n");
 									wrData[1] = 16;
 									int numWrite = write(fd, wrData, wrBufSize);
 									if (numWrite != wrBufSize)
