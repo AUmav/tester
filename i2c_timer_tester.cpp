@@ -99,7 +99,7 @@ int main()
 									if (numWrite != wrBufSize)
 										printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
 								}
-								ready_for_reading = 0;
+								ready_for_reading = -1;
 //////
 							} while (rdData[1] == 5);
 						}
