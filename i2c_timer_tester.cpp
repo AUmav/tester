@@ -98,8 +98,8 @@ int main()
 									int numWrite = write(fd, wrData, wrBufSize);
 									if (numWrite != wrBufSize)
 										printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
-									ready_for_reading = 0;	
 								}
+								ready_for_reading = 0;
 //////
 							} while (rdData[1] == 5);
 						}
