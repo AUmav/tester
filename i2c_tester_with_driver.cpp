@@ -24,6 +24,7 @@ int main()
 	i2c_driver i2c;
 	int command;
 	unsigned char rdData[4];
+	i2c.i2cInit();
 
 	while (1)
 	{
