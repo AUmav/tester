@@ -39,49 +39,47 @@ int main()
 		if(command == 1){
 			do {
 				i2c.i2cRead(rdData);
-				else {
-					if (rdData[0] == 10) {
-						if(rdData[1] == 1){
-							printf("\nStatus code: %d\n", rdData[1]);
-							printf("Sending command 2: checkDispense()");
-							command = 2;
+				if (rdData[0] == 10) {
+					if(rdData[1] == 1){
+						printf("\nStatus code: %d\n", rdData[1]);
+						printf("Sending command 2: checkDispense()");
+						command = 2;
 
-							do{
-								i2c.i2cWrite(2);
-								
-								do {
-									i2c.i2cRead(rdData);
-									else {
-										if (rdData[0] == 10) {
-											if (rdData[1] == 4){
-												printf("\nStatus code: %d || Time = %ds, %dcs\n", rdData[1], rdData[2], rdData[3]);
-											}
-											else{
-												printf("\nStatus code: %d\n", rdData[1]);
-											}
-										}
+						do{
+							i2c.i2cWrite(2);
+
+							do {
+								i2c.i2cRead(rdData);
+
+								if (rdData[0] == 10) {
+									if (rdData[1] == 4){
+										printf("\nStatus code: %d || Time = %ds, %dcs\n", rdData[1], rdData[2], rdData[3]);
 									}
-								} while (rdData[0] != 10);
+									else{
+										printf("\nStatus code: %d\n", rdData[1]);
+									}
+								}
+
+							} while (rdData[0] != 10);
 /// STOP !
 								/* Listening for input stream for any activity */
-								FD_ZERO(&input_set);
-								/* Listen to the input descriptor */
-								FD_SET(STDIN_FILENO, &input_set);
-								timeout.tv_sec = 0;    // 0 seconds
-								timeout.tv_usec = WAIT;    // WAIT milliseconds
-								ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
+							FD_ZERO(&input_set);
+							/* Listen to the input descriptor */
+							FD_SET(STDIN_FILENO, &input_set);
+							timeout.tv_sec = 0;    // 0 seconds
+							timeout.tv_usec = WAIT;    // WAIT milliseconds
+							ready_for_reading = select(1, &input_set, NULL, NULL, &timeout);
 
-								if(ready_for_reading){
-									printf("Stop button pressed\n");
-									command = 16;
-									i2c.i2cWrite(command);
+							if(ready_for_reading){
+								printf("Stop button pressed\n");
+								command = 16;
+								i2c.i2cWrite(command);
 								}
 //////
-							} while (rdData[1] == 5);
-						}
-						else{
-							printf("\nStatus code: %d\n", rdData[1]);
-						}
+						} while (rdData[1] == 5);
+					}
+					else{
+						printf("\nStatus code: %d\n", rdData[1]);
 					}
 				}
 			} while (rdData[0] != 10);
@@ -90,14 +88,11 @@ int main()
 		else{
 			do {
 				i2c.i2cRead(rdData);
-				}
-				else {
-					if (rdData[0] == 10) {
-							printf("\nStatus code: %d\n", rdData[1]);
-					}
+				if (rdData[0] == 10) {
+					printf("\nStatus code: %d\n", rdData[1]);
 				}
 			} while (rdData[0] != 10);
 		}
-}
+	}
 	return 0;
 }
