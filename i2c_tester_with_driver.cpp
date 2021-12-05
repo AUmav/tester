@@ -39,7 +39,9 @@ int main()
 
 		if(command == 1){
 			do {
+				printf("b4 read\n");
 				i2c.i2cRead(rdData);
+				printf("after read\n");
 				if (rdData[0] == 10) {
 					if(rdData[1] == 1){
 						printf("\nStatus code: %d\n", rdData[1]);
