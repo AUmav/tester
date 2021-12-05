@@ -33,7 +33,7 @@ void i2c_driver::i2cWrite(int byteOne)
 		printf("Couldn't write whole buffer (%d) of data, errorcode: %d\n", numWrite, errno);
 }
 
-int i2c_driver::i2cRead(unsigned char* buffer)
+void i2c_driver::i2cRead(unsigned char* buffer)
 {
 	int numRead = read(fd_, &buffer, readBufSize_);
 	if (numRead != readBufSize_)
