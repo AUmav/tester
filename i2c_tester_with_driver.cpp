@@ -13,8 +13,6 @@
 
 #define WAIT 10
 
-
-
 int main()
 {
 // !! Inkluderer kode taget fra https://stackoverflow.com/questions/7226603/timeout-function
@@ -65,6 +63,7 @@ int main()
 
 							} while (rdData[0] != 10);
 /// STOP !
+////////
 								/* Listening for input stream for any activity */
 							FD_ZERO(&input_set);
 							/* Listen to the input descriptor */
@@ -78,7 +77,8 @@ int main()
 								command = 16;
 								i2c.i2cWrite(command);
 								}
-//////
+////////
+////////
 						} while (rdData[1] == 5);
 					}
 					else{
