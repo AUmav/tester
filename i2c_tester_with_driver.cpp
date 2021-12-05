@@ -13,6 +13,7 @@
 
 #define WAIT 10
 
+static int command; 
 int main()
 {
 // !! Inkluderer kode taget fra https://stackoverflow.com/questions/7226603/timeout-function
@@ -22,7 +23,6 @@ int main()
 	int             read_bytes = 0;
 
 	i2c_driver i2c;
-	int command;
 	unsigned char rdData[4];
 	i2c.i2cInit();
 
