@@ -13,7 +13,9 @@
 
 #define WAIT 10
 
-static int command; 
+static int command;
+static 	unsigned char rdData[4];
+
 int main()
 {
 // !! Inkluderer kode taget fra https://stackoverflow.com/questions/7226603/timeout-function
@@ -23,7 +25,6 @@ int main()
 	int             read_bytes = 0;
 
 	i2c_driver i2c;
-	unsigned char rdData[4];
 	i2c.i2cInit();
 
 	while (1)
@@ -36,7 +37,6 @@ int main()
 
 		//Writing
 		i2c.i2cWrite(command);
-		printf("what");
 
 		if(command == 1){
 			do {
