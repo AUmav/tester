@@ -18,8 +18,8 @@ public:
 	void i2cRead(unsigned char* buffer);
 
 private:
-	int readBufSize_ = 4;
-	int writeBufSize_ = 2;
+	int readBufSize_;
+	int writeBufSize_;
 	int fd_;
 	unsigned char slaveAdr_;
 	unsigned char wrData[2];
