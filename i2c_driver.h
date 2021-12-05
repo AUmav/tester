@@ -15,7 +15,7 @@ public:
 	i2c_driver(unsigned char slaveAdr);
 	void i2cInit(); //must run before any other functions in driver
 	void i2cWrite(int byteOne);
-	void i2cRead(unsigned char& buffer);
+	void i2cRead(unsigned char* buffer);
 
 private:
 	int readBufSize_ = 4;
