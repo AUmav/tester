@@ -13,8 +13,7 @@
 
 #define WAIT 10
 
-static int command;
-static 	unsigned char rdData[4];
+
 
 int main()
 {
@@ -24,6 +23,8 @@ int main()
 	int             ready_for_reading = 0;
 	int             read_bytes = 0;
 
+	int command;
+	unsigned char* rdData[4];
 	i2c_driver i2c;
 	i2c.i2cInit();
 
