@@ -15,13 +15,12 @@ public:
 	i2c_driver(unsigned char slaveAdr);
 	void i2cInit(); //must run before any other functions in driver
 	void i2cWrite(int byteOne);
-	int i2cRead();
+	int i2cRead(unsigned char* buffer);
 
 private:
 	int readBufSize_;
 	int writeBufSize_;
 	int fd_;
 	unsigned char slaveAdr_;
-	unsigned char rdData[4];
 	unsigned char wrData[2];
 };
