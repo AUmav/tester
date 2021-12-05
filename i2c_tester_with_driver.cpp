@@ -23,7 +23,7 @@ int main()
 
 	i2c_driver i2c;
 	int command;
-	int rdData[4];
+	unsigned char rdData[4];
 
 	while (1)
 	{
