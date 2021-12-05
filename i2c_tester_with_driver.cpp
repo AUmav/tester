@@ -36,6 +36,7 @@ int main()
 
 		//Writing
 		i2c.i2cWrite(command);
+		printf("what");
 
 		if(command == 1){
 			do {
