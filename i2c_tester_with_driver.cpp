@@ -41,7 +41,7 @@ int main()
 		if(command == 1){
 			do {
 				printf("b4 read\n");
-				i2c.i2cRead(rdData);
+				i2c.i2cRead(&rdData);
 				printf("rdData: %d, %d\n", rdData[1], rdData[2]);
 				if (rdData[0] == 10) {
 					if(rdData[1] == 1){
@@ -53,7 +53,7 @@ int main()
 							i2c.i2cWrite(2);
 
 							do {
-								i2c.i2cRead(rdData);
+								i2c.i2cRead(&rdData);
 
 								if (rdData[0] == 10) {
 									if (rdData[1] == 4){
@@ -91,7 +91,7 @@ int main()
 
 		else{
 			do {
-				i2c.i2cRead(rdData);
+				i2c.i2cRead(&rdData);
 				if (rdData[0] == 10) {
 					printf("\nStatus code: %d\n", rdData[1]);
 				}
