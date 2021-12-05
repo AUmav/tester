@@ -42,7 +42,7 @@ int main()
 			do {
 				printf("b4 read\n");
 				i2c.i2cRead(rdData);
-				printf("after read\n");
+				printf("rdData: %d, %d\n", rdData[1], rdData[2]);
 				if (rdData[0] == 10) {
 					if(rdData[1] == 1){
 						printf("\nStatus code: %d\n", rdData[1]);
