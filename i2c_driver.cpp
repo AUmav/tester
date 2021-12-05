@@ -15,7 +15,7 @@ i2c_driver::i2c_driver(unsigned char slaveAdr)
 void i2c_driver::i2cInit()
 {
 	fd_ = open("/dev/i2c-1", O_RDWR); //open and set read/write
-	if (fd == -1)
+	if (fd_ == -1)
 		printf("Couldn't open /i2c-1 file, error code: %d \n", errno);
 	int err = ioctl(fd_, 0x0703, slaveAdr_); // i2cdev sys call (0x0703) to set I2C addr
 	//0x08 is addr on I2C-slave! (PSoC)
