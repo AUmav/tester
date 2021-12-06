@@ -47,7 +47,7 @@ int main()
 						command = 2;
 
 						do{
-							i2c.i2cWrite(2);
+							i2c.i2cWrite(command);
 
 							do {
 								i2c.i2cRead(rdData);
@@ -76,7 +76,7 @@ int main()
 								printf("Stop button pressed\n");
 								command = 16;
 								i2c.i2cWrite(command);
-								}
+							}
 ////////
 ////////
 						} while (rdData[1] == 5);
